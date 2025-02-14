@@ -1,0 +1,38 @@
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  
+    &.completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+  
+    button {
+      margin-left: 5px;
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 3px 6px;
+      border-radius: 5px;
+      cursor: pointer;
+  
+      &:hover {
+        background: #218838;
+      }
+    }
+  
+    button:last-child {
+      background: red;
+  
+      &:hover {
+        background: darkred;
+      }
+    }
+  }
+  
