@@ -1,10 +1,14 @@
-import TodoList from "./components/TodoList";
-import "./styles/TodoList.scss";
+import React from 'react';
+import { Provider } from 'react-redux';
+import TodoApp from './components/TodoApp';
+import store from './redux/store';
 
-export default function App() {
+function App() {
   return (
-    <div className="App">
-      <TodoList />
-    </div>
+    <Provider store={store}>
+      <TodoApp/>
+    </Provider>
   );
 }
+
+export default App;

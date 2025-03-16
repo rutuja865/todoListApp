@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.todo-app-container{
+  margin: auto;
+  align-items: center;
+  width: 35rem;
+  ul{
+    list-style: none;
+  }
+  input[type="checkbox" i] {
+    accent-color: red;
+  }
+}
