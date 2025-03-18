@@ -4,7 +4,6 @@ import { fetchTasks } from '../api/todoApi';
 import { setTasks, addTask, deleteTask, toggleComplete, setSearchQuery, setEditingIndex } from '../redux/todoSlice';
 import TodoList from './TodoList';
 import SearchBox from './SearchBox';
-import "../styles/todolist.scss";
 const TodoApp = () => {
   const dispatch = useDispatch();
   const tasks = useSelector(state => state.todos.tasks);

@@ -25,3 +25,8 @@ code {
 .login-container{
   margin-bottom: 20rem;
 }
+.todo-container{
+  width: 40rem;
+  margin: auto;
+  align-items: center;
+  }
