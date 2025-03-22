@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setAuthToken } from "../redux/authSlice"; // Adjust path if needed
+import axios from "axios";
+import { login } from "../redux/authSlice"; // Import login action
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,20 +12,25 @@ const Login = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const from = location.state?.from || "/dashboard"; // Get previous route or default to dashboard
+  const from = location.state?.from || "/dashboard"; // Redirect location after login
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
+      // Make an API call to authenticate the user
       const response = await axios.post("https://reqres.in/api/login", {
         email,
         password,
       });
 
-      const token = response.data.token;
-      localStorage.setItem("token", token); // Store token in localStorage
-      dispatch(setAuthToken(token)); // Store token in Redux
+      const token = response.data.token; // Extract the token from the response
+
+      // Dispatch the login action to update Redux state
+      dispatch(login(token));
+
+      // Store the token in sessionStorage for persistence
+      sessionStorage.setItem("token", token);
 
       setMessage("Login successful!");
       navigate(from, { replace: true }); // Redirect to the intended page
@@ -37,7 +42,7 @@ const Login = () => {
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
       <h2>Login</h2>
-      {location.state?.message && <p style={{ color: "red" }}>{location.state.message}</p>} {/* Show message if redirected */}
+      {location.state?.message && <p style={{ color: "red" }}>{location.state.message}</p>}
       
       <form onSubmit={handleLogin}>
         <input
@@ -59,7 +64,7 @@ const Login = () => {
         <button type="submit">Login</button>
       </form>
       <p>{message}</p>
-      <p>Email Id is eve.holt@reqres.in & password is cityslicka</p>
+      <p>Email Id: eve.holt@reqres.in | Password: cityslicka</p>
     </div>
   );
 };

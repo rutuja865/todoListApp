@@ -1,12 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import TodoApp from '../components/TodoApp';
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/authSlice";
+import TodoApp from "../components/TodoApp";
+
 const Dashboard = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
-    localStorage.removeItem("token"); // Clear token
-    navigate("/"); // Redirect to login
+    dispatch(logout()); // Dispatch logout action to clear Redux state
+    navigate("/"); // Redirect to login page
   };
 
   return (
@@ -14,7 +18,7 @@ const Dashboard = () => {
       <h2>Welcome to the Dashboard!</h2>
       <p>You are now logged in.</p>
       <button onClick={handleLogout}>Logout</button>
-      <TodoApp/>
+      <TodoApp />
     </div>
   );
 };
