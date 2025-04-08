@@ -8,6 +8,7 @@ import axios from 'axios';
 
 export const fetchTasks = async () => {
   try {
+    // https://jsonplaceholder.typicode.com/todos?_limit=10&_page=${page}
     const response = await axios.get('https://jsonplaceholder.typicode.com/todos');
     return response.data;
   } catch (error) {
