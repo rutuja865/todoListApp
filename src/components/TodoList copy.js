@@ -12,7 +12,7 @@ const TodoList = ({ tasks, onDelete, onToggleComplete, onEdit }) => {
   return (
     <>
     <div >
-      {tasks.slice(page*10-10,page*10).map((task, index) => (
+      {tasks.map((task, index) => (
         <TodoItem
           key={index}
           task={task}

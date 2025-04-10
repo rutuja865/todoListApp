@@ -9,7 +9,7 @@ const TodoItem = ({ task, onDelete, onToggleComplete, onEdit }) => {
           flex: 1,
         }}
       >
-        {task.title}
+        {task.todo}
       </div>
       {/* <button onClick={onToggleComplete}>
         {task.completed ? 'Undo' : 'Complete'}

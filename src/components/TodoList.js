@@ -1,40 +1,67 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import TodoItem from './TodoItem';
 
+const TodoList = ({
+  tasks,
+  onDelete,
+  onToggleComplete,
+  onEdit,
+  page,
+  setPage,
+  totalTasks,
+  tasksPerPage
+}) => {
+  const totalPages = Math.ceil(totalTasks / tasksPerPage);
 
-const TodoList = ({ tasks, onDelete, onToggleComplete, onEdit }) => {
-  const [page,setPage]=useState(1);
-  
-  const selectedpageHandler=(selectedPage)=>{
-    if(selectedPage>=1 & selectedPage<=tasks.length/10 && selectedPage!==page)
-    setPage(selectedPage)
-  }
+  const selectedPageHandler = (selectedPage) => {
+    if (selectedPage >= 1 && selectedPage <= totalPages && selectedPage !== page) {
+      setPage(selectedPage);
+    }
+  };
+
   return (
     <>
-    <div >
-      {tasks.slice(page*10-10,page*10).map((task, index) => (
-        <TodoItem
-          key={index}
-          task={task}
-          onDelete={() => onDelete(index)}
-          onToggleComplete={() => onToggleComplete(index)}
-          onEdit={() => onEdit(index)}
-        />
-      ))}
-    </div>
-    {
-tasks.length>0 && <div className='pagination'>
-  <span onClick={() => selectedpageHandler(page - 1)} className={page > 1 ?" ":"pagination__disabled"}>Prev</span>
-  {[...Array(tasks.length / 10)].map((_, i) => (
-  <span className={page ===i+1 ? "pagination__selected" :" "} onClick={() => selectedpageHandler(i + 1)} key={i}>{i + 1}</span>
-))}
+      <div>
+        {tasks.map((task, index) => (
+          <TodoItem
+            key={task.id || index}
+            task={task}
+            onDelete={() => onDelete(index)}
+            onToggleComplete={() => onToggleComplete(index)}
+            onEdit={() => onEdit(index)}
+          />
+        ))}
+      </div>
 
-  <span onClick={() => selectedpageHandler(page + 1)} className={page < tasks.length/10 ?" ":"pagination__disabled"}>Next</span>
-</div>
-}
+      {totalPages > 1 && (
+        <div className="pagination">
+          <span
+            onClick={() => selectedPageHandler(page - 1)}
+            className={page > 1 ? '' : 'pagination__disabled'}
+          >
+            Prev
+          </span>
+
+          {[...Array(totalPages)].map((_, i) => (
+            <span
+              key={i}
+              onClick={() => selectedPageHandler(i + 1)}
+              className={page === i + 1 ? 'pagination__selected' : ''}
+            >
+              {i + 1}
+            </span>
+          ))}
+
+          <span
+            onClick={() => selectedPageHandler(page + 1)}
+            className={page < totalPages ? '' : 'pagination__disabled'}
+          >
+            Next
+          </span>
+        </div>
+      )}
     </>
   );
 };
-
 
 export default TodoList;

@@ -18,7 +18,7 @@ const todoSlice = createSlice({
         state.tasks[state.editingIndex] = { ...action.payload };
         state.editingIndex = null;
       } else {
-        state.tasks.push(action.payload);
+        state.tasks.unshift(action.payload);
       }
     },
     deleteTask: (state, action) => {
