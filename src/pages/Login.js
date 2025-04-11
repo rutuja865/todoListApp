@@ -61,7 +61,7 @@ const Login = () => {
           required
         />
         <br /><br />
-        <button type="submit">Login</button>
+        <button className="loginlogout" type="submit">Login</button>
       </form>
       <p>{message}</p>
       <p>Email Id: eve.holt@reqres.in | Password: cityslicka</p>

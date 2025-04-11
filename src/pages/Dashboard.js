@@ -17,7 +17,7 @@ const Dashboard = () => {
     <div style={{ textAlign: "center", marginTop: "50px" }}>
       <h2>Welcome to the Dashboard!</h2>
       <p>You are now logged in.</p>
-      <button onClick={handleLogout}>Logout</button>
+      <button className="loginlogout" onClick={handleLogout}>Logout</button>
       <TodoApp />
     </div>
   );

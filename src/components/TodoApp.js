@@ -6,7 +6,7 @@ import {
   addTask,
   deleteTask,
   toggleComplete,
-  setSearchQuery,
+  // setSearchQuery,
   setEditingIndex
 } from '../redux/todoSlice';
 import TodoList from './TodoList';
@@ -54,7 +54,7 @@ const TodoApp = () => {
         onChange={(e) => setTaskText(e.target.value)}
         placeholder={editingIndex !== null ? 'Edit Task' : 'Add Task'}
       />
-      <button onClick={handleAddOrUpdateTask}>
+      <button className= {editingIndex !== null ? 'Update' : 'Add'} onClick={handleAddOrUpdateTask}>
         {editingIndex !== null ? 'Update' : 'Add'}
       </button>
 

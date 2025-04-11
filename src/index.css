@@ -47,3 +47,49 @@ justify-content: center;
   .pagination__selected{
     background-color: bisque;
   }
+  .task-text {
+    flex: 1;
+    cursor: pointer;
+  
+    &.completed {
+      text-decoration: line-through;
+    }
+  }
+  
+  button{
+    padding: 0.5rem 1rem;
+    border: none;
+    margin: 0.3rem;
+    color: wheat;
+    font-weight: 500;
+    border-radius: 0.2rem;
+  }
+  .editbutton{
+    background-color:steelblue
+   
+  }
+  .deletebutton{
+    background-color:tomato
+  }
+  input{
+    padding: 0.5rem 1rem;
+    border-radius: 0.2rem;
+    border: 1px solid gray;
+    &:focus{
+      outline: none;
+    }
+  }
+  .todotems{
+    display: flex;
+    align-items: center;
+  
+  }
+  .loginlogout{
+    background-color: brown;
+  }
+  .Update{
+    background-color:cornflowerblue;
+  }
+  .Add{
+    background-color: green;
+  }
